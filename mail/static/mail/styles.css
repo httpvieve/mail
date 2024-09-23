@@ -1,3 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+ 
+body {
+    font-family: 'Roboto';
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
 textarea {
     min-height: 400px;
+}
+
+.content-container {
+    display: flex;
+    border: 3px solid #f1f3f4;
+}
+.content-metadata-container{
+    padding: 10px;
+    font-size:18px;
+    background-color: #f1f3f4;
+    border-radius: 8px 8px 0 0;
+}
+.header-subject {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.content-details {
+    display: block;
+    list-style: none;
+}
+
+.content-body {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    tab-size: 4;
+    padding:3%;
+}
+button {
+    font-size: 16px;
+}
+.reply-button,.archive-button, .unarchive-button {
+    cursor: pointer;
+    margin: 1%;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+.reply-button {
+    color: white;
+    background-color: #1a73e8;
+}
+.reply-button:hover {
+    background-color: #1557b0;
+}
+.archive-button, .unarchive-button {
+    color: #202124;
+    background-color: #f1f3f4;
+}
+
+.email-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    flex-direction: column;
+}
+.email-card {
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f3f4;
+    transition: box-shadow 0.2s ease-in-out;
+}
+.email-card:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.email-sender {
+    width: 180px;
+    padding-right: 15px;
+    margin: 0;
+    position: relative; 
+}
+.email-details {
+    margin: 0;
+    width: 750px;
+    overflow: hidden;
+    white-space: nowrap;
+    align-items: center;
+    text-overflow: ellipsis;
+}
+.email-body {
+    color:gray;
+}
+
+.email-timestamp {
+    margin: 0;
+    width: 100px;
+    font-size: 12px;
+    color: #5f6368;
+    text-align: right;
+    white-space: nowrap;
+} 
+.mail-viewed{
+    font-weight: normal;
+    background-color: lightgray;
+}
+.mail-pending {
+    background-color: #ffffff;
+    font-weight: bold;
 }
