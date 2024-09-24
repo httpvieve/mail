@@ -34,8 +34,6 @@ function compose_email() {
 
 function view_content (email_id, mailbox) {
 
-  
-
   fetch(`/emails/${email_id}`)
   .then(response => response.json())
   .then(email => {
@@ -43,16 +41,15 @@ function view_content (email_id, mailbox) {
     document.querySelector('#emails-view').style.display = 'none';
     document.querySelector('#compose-view').style.display = 'none';
     document.querySelector('#content-view').style.display = 'block';
+ 
     document.querySelector('#content-view').innerHTML = `
-    <div class="content-container">
-      <ul class="content-details">
-        <li><h3>${email.subject}</h3> </li>
-        <li><b>From:</b> ${email.sender}</li>
-        <li><b>To:</b> ${email.recipients.join(', ')}</li>
-        <li><b> Date: </b> ${email.timestamp}</li>
-      </ul>
-    </div>
-    <p class="content-body"> ${email.body}</p><br>
+    <ul class="list-group">
+      <li class="list-group-item content-card "><h3>${email.subject}</h3> </li>
+      <li class="list-group-item content-card "><b>From:</b> ${email.sender}</li>
+      <li class="list-group-item content-card "><b>To:</b> ${email.recipients.join(', ')}</li>
+      <li class="list-group-item content-card  "><b> Date: </b> ${email.timestamp}</li>
+      <li class="list-group-item content-body">${email.body}</li>
+    </ul>
     `;
 
     if (email.read == false) {
@@ -91,7 +88,7 @@ function view_content (email_id, mailbox) {
     
     const replyButton = create_button("Reply", "reply");
     const forwardButton = create_button("Forward", "forward");
-    
+
     forwardButton.addEventListener ('click', function() {
       compose_email();
       document.querySelector('#compose-recipients').value = '';
@@ -101,9 +98,9 @@ function view_content (email_id, mailbox) {
 
     replyButton.addEventListener ('click', function() {
       compose_email();
-      document.querySelector('#compose-recipients').value = email.recipients.join(', ');
+      document.querySelector('#compose-recipients').value = email.sender;
       document.querySelector('#compose-subject').value = email.subject.startsWith('Re: ') ? email.subject : `Re: ${email.subject}`;
-      document.querySelector('#compose-body').value = `On ${email.timestamp} <${email.sender}> wrote: \n\t ${email.body} \n`;
+      document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: \n\t ${email.body} \n`;
     });
     
       document.querySelector("#content-view").append(replyButton, forwardButton);
@@ -125,14 +122,23 @@ function load_mailbox(mailbox) {
   .then(emails => {
     if (emails.length > 0) {
       /* loop through all existing mails*/
+      
       emails.forEach (mail => {
         const mailContent = document.createElement('div');
         mailContent.className = `email-card ${mail.read ? "mail-viewed" : "mail-pending"}`;
+        if (mailbox != 'sent') {
         mailContent.innerHTML = `
-        <p class="email-sender">${mail.sender}</p>
+        <p class="email-sender"> ${mail.sender}</p>
         <p class="email-details">${mail.subject} - <span class="email-body">${mail.body}<span></p>
         <p class="email-timestamp"> ${mail.timestamp}</p>
         `;
+      } else {
+        mailContent.innerHTML = `
+        <p class="email-sender">To:${mail.recipients}</p>
+        <p class="email-details">${mail.subject} - <span class="email-body">${mail.body}<span></p>
+        <p class="email-timestamp"> ${mail.timestamp}</p>
+        `;
+      }
         mailContent.addEventListener ('click', function() {
           view_content(mail.id, mailbox)
         });
