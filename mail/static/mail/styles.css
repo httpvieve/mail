@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
  
 body {
+    background: #f8fafc;
     font-family: 'Roboto';
     font-size: 16px;
     display: flex;
@@ -15,25 +16,24 @@ body {
 textarea {
     min-height: 400px;
 }
-
+#content-view {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 .content-container {
+    padding-top: 15px;
     display: flex;
-    border: 3px solid #f1f3f4;
+    background:  #f1f3f4;
 }
-.content-metadata-container{
-    padding: 10px;
-    font-size:18px;
-    background-color: #f1f3f4;
-    border-radius: 8px 8px 0 0;
-}
-.header-subject {
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 20px;
-}
+
+
 .content-details {
-    display: block;
-    list-style: none;
+    list-style:none;
+    font-size: 18px;
+    /* background: #5f6368; */
 }
 
 .content-body {
@@ -41,32 +41,39 @@ textarea {
     word-wrap: break-word;
     tab-size: 4;
     padding:3%;
-}
-button {
     font-size: 16px;
-}
-.reply-button,.archive-button, .unarchive-button {
-    cursor: pointer;
-    margin: 1%;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-right: 10px;
-    transition: background-color 0.3s;
-}
-.reply-button {
-    color: white;
-    background-color: #1a73e8;
-}
-.reply-button:hover {
-    background-color: #1557b0;
-}
-.archive-button, .unarchive-button {
-    color: #202124;
-    background-color: #f1f3f4;
+  line-height: 1.5;
+  color: #202124;
 }
 
+.options {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5f6368;
+    background-color: transparent;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.options:hover {
+    background-color: #f1f3f4;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+.options:active {
+    background-color: #e8eaed;
+}
+
+.options .material-icons {
+    font-size: 18px;
+    margin-right: 8px;
+}
 .email-container {
     display: flex;
     width: 100%;
@@ -119,3 +126,7 @@ button {
     background-color: #ffffff;
     font-weight: bold;
 }
+
+
+
+

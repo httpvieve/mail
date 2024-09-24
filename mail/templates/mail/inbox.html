@@ -5,20 +5,16 @@
     <br>
     <h2>{{ request.user.email }}</h2>
 
-    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
-    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <button class="btn btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-primary" id="compose">Compose</button>
+    <button class="btn btn-outline-secondary"id="sent">Sent</button>
+    <button class="btn btn-outline-secondary" id="archived">Archived</button>
+    <a class="btn btn-outline-danger" href="{% url 'logout' %}">Log Out</a>
     <hr>
 
-    <div class="email-container" id="emails-view">
-        
-    </div>
+    <div class="email-container" id="emails-view"></div>
 
-    <div class="content-container" id="content-view">
-
-    </div>
+    <div class="content-container" id="content-view"></div>
 
     <div id="compose-view">
         <h3>New Email</h3>
